@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "632502826672",
+    "project_id": "kanban-f616d",
+    "storage_bucket": "kanban-f616d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632502826672:android:a892a62934eafa8a6eed75",
+        "android_client_info": {
+          "package_name": "com.kanban.com.kanban"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632502826672-668f02lc00rmhpirtd952agkgt82j6it.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kanban.com.kanban",
+            "certificate_hash": "a685fa119468d7551104aa483e0837c4142fc93c"
+          }
+        },
+        {
+          "client_id": "632502826672-3q8ept1muna1humvfvgl8rbq2rhkgdbg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACkTK6iXNC252fZ67_vXIT8_DBG2Jpb70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632502826672-3q8ept1muna1humvfvgl8rbq2rhkgdbg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "632502826672-diojuvstvfa4sg20156psppbdrp3cisl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kanban.com.kanban"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
