@@ -1,32 +1,36 @@
+import 'dart:async';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'core/app_theme.dart';
-import 'features/posts/presentation/bloc/add_delete_update_post/add_delete_update_post_bloc.dart';
-import 'features/posts/presentation/bloc/posts/posts_bloc.dart';
-import 'features/posts/presentation/pages/posts_page.dart';
-import 'injection_container.dart' as di;
+import 'package:flutter/services.dart';
+import 'core/di/components/service_locator.dart';
+import 'features/app_features/presentation/pages/my_app.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await di.init();
-  runApp(const MyApp());
+
+  await setPreferredOrientations();
+  await setupLocator();
+  return runZonedGuarded(() async {
+    await Firebase.initializeApp().whenComplete(() {
+      runApp(MyApp());
+    });
+  }, (error, stack) {
+    if (kDebugMode) {
+      print(stack);
+    }
+    if (kDebugMode) {
+      print(error);
+    }
+  });
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-              create: (_) => di.sl<PostsBloc>()..add(GetAllPostsEvent())),
-          BlocProvider(create: (_) => di.sl<AddDeleteUpdatePostBloc>()),
-        ],
-        child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: appTheme,
-            title: 'Posts App',
-            home: const PostsPage()));
-  }
+Future<void> setPreferredOrientations() {
+  return SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]);
 }
