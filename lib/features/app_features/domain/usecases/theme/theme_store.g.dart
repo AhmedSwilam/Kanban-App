@@ -25,7 +25,7 @@ mixin _$ThemeStore on _ThemeStore, Store {
   }
 
   final _$changeBrightnessToDarkAsyncAction =
-      AsyncAction('_ThemeStore.changeBrightnessToDark');
+  AsyncAction('_ThemeStore.changeBrightnessToDark');
 
   @override
   Future<dynamic> changeBrightnessToDark(bool value) {
