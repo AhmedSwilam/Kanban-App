@@ -118,10 +118,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: <Widget>[
                     Expanded(
                       flex: 1,
-                      child: _buildLeftSide(),
-                    ),
-                    Expanded(
-                      flex: 1,
                       child: _buildRightSide(),
                     ),
                   ],
@@ -147,15 +143,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildLeftSide() {
-    return SizedBox.expand(
-      child: Image.asset(
-        Assets.carBackground,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
   Widget _buildRightSide() {
     return SingleChildScrollView(
       child: Padding(
@@ -168,8 +155,8 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.all(46.0),
               child: _themeStore.darkMode
-                  ? const AppIconWidget(image: 'assets/images/kblogodark.png')
-                  : const AppIconWidget(image: 'assets/images/kblogolight.png'),
+                  ? const AppIconWidget(image: 'assets/images/kanban.png')
+                  : const AppIconWidget(image: 'assets/images/kanban.png'),
             ),
             const SizedBox(height: 14.0),
             Container(

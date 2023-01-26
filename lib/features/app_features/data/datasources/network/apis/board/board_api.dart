@@ -19,8 +19,6 @@ class BoardApi {
     try {
       //final res = await _dioClient.get(Endpoints.getBoards);
       //return BoardList.fromJson(res);
-
-      // Fake API
       List<Board> boards = [];
 
       List<Board> filteredBoards =

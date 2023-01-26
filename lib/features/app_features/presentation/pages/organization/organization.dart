@@ -34,9 +34,9 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
   //stores:---------------------------------------------------------------------
   late OrganizationListStore _organizationListStore;
   late final OrganizationStoreValidation _organizationStoreValidation =
-       OrganizationStoreValidation();
+      OrganizationStoreValidation();
   late final ProjectStoreValidation _projectStoreValidation =
-       ProjectStoreValidation();
+      ProjectStoreValidation();
 
   late ThemeStore _themeStore;
   late LanguageStore _languageStore;
@@ -45,10 +45,11 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
   final currentUser = FirebaseAuth.instance.currentUser;
 
   final TextEditingController _titleController = TextEditingController();
-  final  TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   final TextEditingController _projectTitleController = TextEditingController();
-  final TextEditingController _projectDescriptionController = TextEditingController();
+  final TextEditingController _projectDescriptionController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -90,16 +91,17 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
           onPressed: () => _showOrganizationBottomSheet(context),
           textWidget:
               const Text("Organization", style: TextStyle(color: Colors.white)),
-          icon:
-              const Icon(Icons.supervised_user_circle_outlined, color: Colors.white),
+          icon: const Icon(Icons.supervised_user_circle_outlined,
+              color: Colors.white),
         ),
         Observer(builder: (context) {
           return _organizationListStore.organizationList.length > 0
               ? ActionButton(
                   onPressed: () => _showProjectBottomSheet(context),
-                  textWidget:
-                      const Text("Project", style: TextStyle(color: Colors.white)),
-                  icon: const Icon(Icons.table_chart_outlined, color: Colors.white),
+                  textWidget: const Text("Project",
+                      style: TextStyle(color: Colors.white)),
+                  icon: const Icon(Icons.table_chart_outlined,
+                      color: Colors.white),
                 )
               : const SizedBox();
         }),
@@ -154,7 +156,8 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
               const SizedBox(width: 10.0),
               OutlinedButton(
                 style: TextButton.styleFrom(
-                    foregroundColor: Colors.black45, disabledForegroundColor: Colors.red.withOpacity(0.38),
+                    foregroundColor: Colors.black45,
+                    disabledForegroundColor: Colors.red.withOpacity(0.38),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(255.0),
                     )),
@@ -228,7 +231,8 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
                   ? const CircularProgressIndicator()
                   : ElevatedButton(
                       style: TextButton.styleFrom(
-                          foregroundColor: Colors.blue, disabledForegroundColor: Colors.red.withOpacity(0.38),
+                          foregroundColor: Colors.blue,
+                          disabledForegroundColor: Colors.red.withOpacity(0.38),
                           minimumSize: const Size(128, 40),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
@@ -305,7 +309,8 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
                 const SizedBox(width: 10.0),
                 OutlinedButton(
                   style: TextButton.styleFrom(
-                      foregroundColor: Colors.black45, disabledForegroundColor: Colors.red.withOpacity(0.38),
+                      foregroundColor: Colors.black45,
+                      disabledForegroundColor: Colors.red.withOpacity(0.38),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(255.0),
                       )),
@@ -335,14 +340,18 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
                 Observer(
                   builder: (context) => DropdownButton<String>(
                     value: _projectStoreValidation.selectedOrgId.toString(),
-                    iconEnabledColor: _themeStore.darkMode ? Colors.white : Colors.blue,
+                    iconEnabledColor:
+                        _themeStore.darkMode ? Colors.white : Colors.blue,
                     dropdownColor: Colors.white,
                     items: _organizationListStore.organizationList
                         .map((dropdownItem) {
                       return DropdownMenuItem<String>(
                         value: dropdownItem.id.toString(),
                         child: Text(dropdownItem.title!,
-                            style: TextStyle(color: _themeStore.darkMode ? Colors.blue : Colors.blue)),
+                            style: TextStyle(
+                                color: _themeStore.darkMode
+                                    ? Colors.blue
+                                    : Colors.blue)),
                       );
                     }).toList(),
                     onChanged: (newVal) {
@@ -414,7 +423,8 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
               ? const CircularProgressIndicator()
               : ElevatedButton(
                   style: TextButton.styleFrom(
-                      foregroundColor: Colors.blue, disabledForegroundColor: Colors.red.withOpacity(0.38),
+                      foregroundColor: Colors.blue,
+                      disabledForegroundColor: Colors.red.withOpacity(0.38),
                       minimumSize: const Size(128, 40),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -476,23 +486,24 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
               child: Stack(children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 15.0, left: 15.0),
-                  child: CircleAvatar(
-                    radius: 50.0,
-                    backgroundImage:
-                        const NetworkImage('https://via.placeholder.com/100'),
-                    backgroundColor: Colors.blue.shade500,
-                  ),
+                  child: SizedBox(
+                    height: 100,
+                      width: double.infinity,
+                      child: Image.asset("assets/images/kanban.png")),
                 ),
                 Positioned(
-                    bottom: 12.0,
-                    left: 16.0,
-                    child: currentUser!.email !=null?Text(currentUser!.email!,
-                        style: TextStyle(
-                            color: _themeStore.darkMode
-                                ? Colors.blue
-                                : Colors.white,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w500)):const Text("John Doe"),)
+                  bottom: 12.0,
+                  left: 16.0,
+                  child: currentUser!.email != null
+                      ? Text(currentUser!.email!,
+                          style: TextStyle(
+                              color: _themeStore.darkMode
+                                  ? Colors.blue
+                                  : Colors.white,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w500))
+                      : const Text("John Doe"),
+                )
               ])),
           ListTile(
             title: Text('Blogs',
