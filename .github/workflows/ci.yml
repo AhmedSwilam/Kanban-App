@@ -1,13 +1,13 @@
 name: CI
 on:
-  workflow_dispatch
+
   push:
     branches:
       - develop
   pull_request:
     branches:
       - develop
-
+  workflow_dispatch:
 jobs:
   flutter_test:
     name: Run flutter test and analyze
