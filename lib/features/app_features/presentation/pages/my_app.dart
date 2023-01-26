@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:kanban/features/app_features/presentation/pages/login/login.dart';
+import 'package:kanban/features/app_features/presentation/pages/organization/organization.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '../../../../core/constants/app_theme.dart';
@@ -14,11 +16,11 @@ import '../../domain/usecases/organization/organization_list_store.dart';
 import '../../domain/usecases/post/post_store.dart';
 import '../../domain/usecases/theme/theme_store.dart';
 import '../../domain/usecases/user/user_store.dart';
-import 'login/login.dart';
-import 'organization/organization.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  // Create your store as a final variable in a base Widget. This works better
+  // with Hot Reload than creating it directly in the `build` function.
   final ThemeStore _themeStore = ThemeStore(getIt<Repository>());
   final PostStore _postStore = PostStore(getIt<Repository>());
   final OrganizationListStore _organizationListStore = OrganizationListStore(getIt<Repository>());
